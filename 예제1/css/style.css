@@ -1,0 +1,283 @@
+@charset "UTF-8";
+html{
+  font-size: 10px;
+}
+
+body{
+  font-size: 1.4rem;
+}
+
+/* mobile button start */
+input[type=checkbox]#gnbcheck{ display: none; }
+
+/*mobile close button*/
+#mobile_close_btn{
+  position: absolute;
+  width: 32px;/*3.2rem*/
+  height: 32px;
+  top: 10px;/*1rem*/
+  right: 10px;
+  z-index: 7000;
+  display: none;
+}
+
+#mobile_close_btn:before,#mobile_close_btn:after{
+  content: '';
+  position: absolute;
+  width: 32px;
+  height: 1.6px;
+  top: 16px;
+  background: #fff;
+}
+
+#mobile_close_btn:before{
+  transform: rotate(40deg);
+}
+
+#mobile_close_btn:after{
+  transform: rotate(-40deg);
+}
+
+/*mobile gnb btn*/
+#gnbbtn{
+  position: absolute;
+  top: 10px;/*1rem*/
+  right: 10px;/*1rem*/
+  width: 32px;/*3.2rem*/
+  height: 32px;/*3.2rem*/
+  z-index: 6000;
+  display: none;
+}
+
+#gnbbtn span{
+  position: absolute;
+  width: 32px;/*3.2rem*/
+  height: 1.6px;/*0.16rem*/
+  top: 16px;/*1.6rem*/
+  background: #fff;
+  transform: translateY(-50%);
+}
+
+#gnbbtn span:nth-child(1){ top: 8px;/*0.8rem*/ }
+#gnbbtn span:nth-child(2){ top: 24px;/*2.4rem*/ }
+
+
+
+
+#wrap{
+  position: relative;
+  width: 120rem;
+  min-width: 23rem;
+  margin: 0 auto;
+  background: red;
+}
+
+#wrap .header{
+  position: relative;
+  height: 10rem;
+  background: skyblue;
+  /* index: 8000; */
+}
+
+#wrap .header .logo{
+  position: absolute;
+  width: 15rem;
+  height: 10rem;
+  line-height: 10rem;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  background: #000000;
+}
+
+#wrap .header .gnb{
+  position: absolute;
+  right: 1rem;
+  top: 2rem;
+  z-index: 7000;
+}
+
+#wrap .header .gnb .mainmenu{
+  position: relative;
+  width: 80rem;
+  height: 6rem;
+  background: #000000;
+}
+
+#wrap .header .gnb .mainmenu > li{
+  position: relative;
+  width: 25%;
+  float: left;
+}
+
+#wrap .header .gnb .mainmenu > li > a{
+  position: relative;
+  display: block;
+  font-size: 1.6rem;
+  line-height: 6rem;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background .5s;
+}
+
+#wrap .header .gnb .mainmenu > li:hover > a{
+  background: #f00;
+}
+
+/*sub 개별 노출*/
+#wrap .header .gnb .mainmenu > li:hover > .submenu{
+  display: block;
+}
+/*sub 전체 노출*/
+/* #wrap .header .gnb:hover .submenu{
+  display: block;
+} */
+
+/*sub메뉴*/
+.mainmenu .submenu{
+  position: relative;
+  background: #000;
+  display: none;
+}
+
+.mainmenu .submenu li a{
+  display: block;
+  line-height: 4rem;
+  text-align: center;
+  color: #fff;
+  text-transform: capitalize;
+  transition: background .5s;
+}
+
+.mainmenu .submenu li a:hover{
+  background: #f00;
+}
+
+/*main*/
+.main .slide{
+  height: 30rem;
+  background: orange;
+}
+
+.main .board{
+  background: green;
+  overflow: hidden;
+}
+
+.main .board > div{
+  width: calc( 100%/3 );
+  height: 20rem;
+  float: left;
+  text-indent: -9999px
+}
+
+.main .board .notice{
+  background: rgba(0, 0, 0, .5);
+}
+
+.main .board .gallery{
+  background: rgba(0, 0, 0, .1);
+}
+
+.main .board .banner{
+  background: rgba(0, 0, 0, .8);
+}
+
+/*하단 영역*/
+#wrap .footer{
+  overflow: hidden;
+}
+
+#wrap .footer > div{
+  height: 10rem;
+  float: left;
+}
+
+#wrap .footer .f_left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  background: #000;
+}
+
+#wrap .footer .f_left a{
+  color: #fff;
+}
+
+#wrap .footer .f_right{
+  width: 85%;
+  background: gray;
+}
+
+#wrap .footer .f_right .f_menu{
+  height: 5rem;
+  background: rgba(255, 255, 255, .5);
+}
+
+#wrap .footer .f_right .f_copy{
+  height: 5rem;
+  background: rgba(255, 255, 255, .7);
+}
+
+/*화면 구간별 대응*/
+/*1200px, 1024px, 960px*/
+@media all and ( max-width: 1200px ) {
+  #wrap{
+    width: 100%;
+  }
+}
+
+@media all and ( max-width: 960px ) {
+
+  input[type=checkbox]#gnbcheck:checked ~ .header .gnb{
+    left: 0;
+  }
+
+  #mobile_close_btn{
+    display: block;
+  }
+
+  #gnbbtn{ display: block; }
+
+  #wrap .header .gnb{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    left: -100%;
+    background: rgba(0, 0, 0, .8);
+    transition: .5s ease-in-out;
+  }
+
+  #wrap .header .gnb ul.mainmenu{
+    padding-top: 50px;/*gnb 상단에 close button을 넣기위한 공간 생성*/
+    width: 100%;
+  }
+  #wrap .header .gnb ul.mainmenu li{
+    width: 100%;
+  }
+
+}
+
+@media all and ( max-width: 768px ) {
+
+  .main .board .notice,.main .board .gallery{
+    width: 50%;
+  }
+  .main .board .banner{
+    width: 100%;
+  }
+}
+
+@media all and ( max-width: 480px ) {
+  html{
+    font-size: 6px;
+  }
+  .main .board .notice,.main .board .gallery{
+    width: 100%;
+  }
+}
